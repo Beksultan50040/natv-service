@@ -15,7 +15,7 @@ public class Days {
 
     @ManyToOne
     @JoinColumn(name = "id_order_details")
-    private OrderDetail idOrderDetails;
+    private OrderDetail idOrderDetail;
 
     private String day;
 
