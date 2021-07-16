@@ -10,11 +10,11 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "id_channels")
-    private Channels IdChannels;
+    private Channels idChannels;
 
     @ManyToOne
     @JoinColumn(name = "id_orders")
-    private Channels IdOrders;
+    private Channels idOrders;
 
     private double price;
 
