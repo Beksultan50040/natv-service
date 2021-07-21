@@ -8,6 +8,8 @@ import kg.megacom.natvservice.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,10 +22,10 @@ public class PriceServiceImpl implements PriceService {
     @Override
     public PriceDto save(PriceDto priceDto) {
         Price price = PriceMapper.INSTANCE.toEntity(priceDto);
-//        price.setStarDate(new Date());
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.add(Calendar.YEAR, 10);
-//        price.setEndDate(calendar.getTime());
+        price.setStartDate(new Date());
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, 10);
+        price.setEndDate(calendar.getTime());
         price = priceRepo.save(price);
         return PriceMapper.INSTANCE.toDto(price);
     }
