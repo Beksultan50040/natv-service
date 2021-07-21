@@ -1,9 +1,12 @@
 package kg.megacom.natvservice.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "order_detail")
+@Data
 public class OrderDetail {
 
     @Id
@@ -16,7 +19,7 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "id_orders")
-    private Channels idOrders;
+    private Orders idOrders;
 
     private double price;
 

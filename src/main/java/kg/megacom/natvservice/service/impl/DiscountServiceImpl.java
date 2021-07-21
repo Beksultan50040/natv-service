@@ -8,6 +8,8 @@ import kg.megacom.natvservice.service.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,6 +22,10 @@ public class DiscountServiceImpl implements DiscountService {
     @Override
     public DiscountsDto save(DiscountsDto discountsDto) {
         Discounts discounts = DiscountMapper.INSTANCE.toEntity(discountsDto);
+        discounts.setStarDate(new Date());
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, 10);
+        discounts.setEndDate(calendar.getTime());
         discounts = discountRepo.save(discounts);
         return DiscountMapper.INSTANCE.toDto(discounts);
     }

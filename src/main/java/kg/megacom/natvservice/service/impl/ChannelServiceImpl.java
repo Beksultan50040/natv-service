@@ -8,6 +8,7 @@ import kg.megacom.natvservice.service.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.channels.Channel;
 import java.util.List;
 
 @Service
@@ -35,6 +36,10 @@ public class ChannelServiceImpl implements ChannelService {
 
     @Override
     public ChannelsDto findBy(Long id) {
-        return null;
+
+        Channels channels = channelsRepo.findById(id).get();
+
+        return ChannelMapper.INSTANCE.toDto(channels);
+
     }
 }
