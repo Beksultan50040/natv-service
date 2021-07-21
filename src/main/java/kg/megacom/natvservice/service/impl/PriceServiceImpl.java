@@ -20,6 +20,10 @@ public class PriceServiceImpl implements PriceService {
     @Override
     public PriceDto save(PriceDto priceDto) {
         Price price = PriceMapper.INSTANCE.toEntity(priceDto);
+//        price.setStarDate(new Date());
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.add(Calendar.YEAR, 10);
+//        price.setEndDate(calendar.getTime());
         price = priceRepo.save(price);
         return PriceMapper.INSTANCE.toDto(price);
     }

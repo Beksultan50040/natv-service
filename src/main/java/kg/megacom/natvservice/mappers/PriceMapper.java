@@ -1,6 +1,5 @@
 package kg.megacom.natvservice.mappers;
 
-
 import kg.megacom.natvservice.models.Price;
 import kg.megacom.natvservice.models.dto.PriceDto;
 import org.mapstruct.Mapper;

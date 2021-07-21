@@ -3,6 +3,7 @@ package kg.megacom.natvservice.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "prices")
@@ -17,7 +18,7 @@ public class Price {
     @JoinColumn(name = "id_channels")
     private Channels channels;
 
-    private String starDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
     private double price;
 }

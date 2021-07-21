@@ -3,7 +3,8 @@ package kg.megacom.natvservice.models.dto;
 import kg.megacom.natvservice.models.Channels;
 import lombok.Data;
 
-import javax.persistence.*;
+import java.util.Date;
+
 
 @Data
 public class PriceDto {
@@ -12,7 +13,7 @@ public class PriceDto {
 
     private ChannelsDto channels;
 
-    private String starDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
     private double price;
 }

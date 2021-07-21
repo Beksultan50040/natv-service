@@ -5,6 +5,7 @@ import kg.megacom.natvservice.models.Channels;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 public class DiscountsDto {
@@ -14,7 +15,7 @@ public class DiscountsDto {
     private ChannelsDto channels;
 
     private int percent;
-    private String starDate;
-    private String endDate;
+    private Date starDate;
+    private Date endDate;
     private int midDays;
 }

@@ -3,6 +3,7 @@ package kg.megacom.natvservice.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
@@ -18,8 +19,8 @@ public class Orders {
     private String phone;
     private String email;
     private long totalPrice;
-    private String addDate;
-    private String editDate;
+    private Date addDate;
+    private Date editDate;
     private boolean status;
 
 }

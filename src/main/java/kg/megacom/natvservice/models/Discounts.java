@@ -4,6 +4,7 @@ package kg.megacom.natvservice.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "discounts")
@@ -19,7 +20,7 @@ public class Discounts {
     private Channels channels;
 
     private int percent;
-    private String starDate;
-    private String endDate;
+    private Date starDate;
+    private Date endDate;
     private int midDays;
 }
