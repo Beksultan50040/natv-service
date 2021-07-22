@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 
 public class DiscountDto {
     private int minDays;
-    private double percent;
+    private int percent;
 
-    public DiscountDto(int minDays, double percent) {
+    public DiscountDto(int minDays, int percent) {
         this.minDays = minDays;
         this.percent = percent;
     }

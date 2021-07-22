@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface PriceRepo extends JpaRepository<Price, Long> {
 
-    @Query( value = "select new kg.megacom.natvservice.models.json.ChannelDto(u.channels.id, u.channels.name, u.channels.photo, u.price) from Price u where ?1 between u.startDate and u.endDate and u.channels.active = true")
-    List<ChannelDto> findChannelsWithPrice(Date date);
+    @Query( value = "select new kg.megacom.natvservice.models.json.ChannelDto(u.channels.id, u.channels.name, u.channels.photo, u.price) from Price u") /*where ?1 between u.startDate and u.endDate and u.channels.active = true")*/
+    List<ChannelDto> findChannelsWithPrice(/*Date date*/);
 }

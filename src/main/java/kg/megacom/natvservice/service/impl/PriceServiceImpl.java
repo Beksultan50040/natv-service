@@ -47,6 +47,6 @@ public class PriceServiceImpl implements PriceService {
 
     @Override
     public List<ChannelDto> findChannelWithPrice() {
-        return priceRepo.findChannelsWithPrice(new Date());
+        return priceRepo.findChannelsWithPrice(/*new Date()*/);
     }
 }
