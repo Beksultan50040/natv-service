@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-/*
+
 @RestController
 @RequestMapping("/api/v1/channel")
 public class ChannelController implements BaseController<ChannelsDto, Long> {
@@ -36,4 +36,3 @@ public class ChannelController implements BaseController<ChannelsDto, Long> {
         return null;
     }
 }
-*/

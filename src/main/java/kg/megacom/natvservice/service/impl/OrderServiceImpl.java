@@ -4,9 +4,7 @@ import kg.megacom.natvservice.dao.DaysRepo;
 import kg.megacom.natvservice.dao.OrderDetailRepo;
 import kg.megacom.natvservice.dao.OrderRepo;
 import kg.megacom.natvservice.mappers.ChannelMapper;
-import kg.megacom.natvservice.mappers.OrderDetailMapper;
 import kg.megacom.natvservice.mappers.OrderMapper;
-import kg.megacom.natvservice.mappers.OrdersMapper;
 import kg.megacom.natvservice.models.Days;
 import kg.megacom.natvservice.models.OrderDetail;
 import kg.megacom.natvservice.models.Orders;
@@ -18,7 +16,6 @@ import kg.megacom.natvservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
 import java.util.Date;
 
 @Service
@@ -42,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
         int i = 0;
         Response response = Response.getResponse();
 
-        Orders orders = OrdersMapper.INSTANCE.toEntity(requestDto.getOrders());
+        Orders orders = OrderMapper.INSTANCE.toEntity(requestDto.getOrders());
         orders.setAddDate(new Date());
         orders.setEditDate(new Date());
         orders.setStatus(true);

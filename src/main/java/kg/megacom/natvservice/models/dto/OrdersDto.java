@@ -15,8 +15,5 @@ public class OrdersDto {
     private String phone;
     private String email;
     private long totalPrice;
-    private Date addDate;
-    private Date editDate;
-    private boolean status;
 
 }
