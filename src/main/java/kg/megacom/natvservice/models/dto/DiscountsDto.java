@@ -15,7 +15,15 @@ public class DiscountsDto {
     private ChannelsDto channels;
 
     private int percent;
-    private Date starDate;
+    private Date startDate;
     private Date endDate;
     private int midDays;
+
+    public DiscountsDto(Long id, int percent, Date startDate, Date endDate, int midDays) {
+        this.id = id;
+        this.percent = percent;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.midDays = midDays;
+    }
 }

@@ -1,10 +1,13 @@
 package kg.megacom.natvservice.service.impl;
 
+import kg.megacom.natvservice.dao.DaysRepo;
 import kg.megacom.natvservice.dao.OrderDetailRepo;
 import kg.megacom.natvservice.dao.OrderRepo;
 import kg.megacom.natvservice.mappers.ChannelMapper;
+import kg.megacom.natvservice.mappers.OrderDetailMapper;
 import kg.megacom.natvservice.mappers.OrderMapper;
 import kg.megacom.natvservice.mappers.OrdersMapper;
+import kg.megacom.natvservice.models.Days;
 import kg.megacom.natvservice.models.OrderDetail;
 import kg.megacom.natvservice.models.Orders;
 import kg.megacom.natvservice.models.Response;
@@ -25,6 +28,9 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepo orderRepo;
 
     @Autowired
+    private DaysRepo daysRepo;
+
+    @Autowired
     private OrderDetailRepo orderDetailRepo;
 
     @Autowired
@@ -33,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response save(RequestDto requestDto) {
+        int i = 0;
         Response response = Response.getResponse();
 
         Orders orders = OrdersMapper.INSTANCE.toEntity(requestDto.getOrders());
@@ -41,11 +48,21 @@ public class OrderServiceImpl implements OrderService {
         orders.setStatus(true);
         orderRepo.save(orders);
 
-        OrderDetail orderDetail = new OrderDetail();
-        orderDetail.setIdChannels(ChannelMapper.INSTANCE.toEntity(channelService.findBy(requestDto.getChannels().get(0).getChannelId())));
-        orderDetail.setIdOrders(OrderMapper.INSTANCE.toEntity(findById(requestDto.getOrders().getId())));
-        orderDetail.setPrice(requestDto.getChannels().get(0).getPrice());
-        orderDetailRepo.save(orderDetail);
+        while(i<requestDto.getChannels().size()) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setIdChannels(ChannelMapper.INSTANCE.toEntity(channelService.findBy(requestDto.getChannels().get(i).getChannelId())));
+            orderDetail.setIdOrders(OrderMapper.INSTANCE.toEntity(findById(requestDto.getOrders().getId())));
+            orderDetail.setPrice(requestDto.getChannels().get(i).getPrice());
+            orderDetailRepo.save(orderDetail);
+
+
+            Days days = new Days();
+            days.setIdOrderDetail(orderDetailRepo.findById(orderDetail.getId()).get());
+            days.setDay(requestDto.getChannels().get(i).getDays().size());
+            daysRepo.save(days);
+            i++;
+        }
+
 
         response.setMessage("Ok");
         return response;

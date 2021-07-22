@@ -4,7 +4,10 @@ import kg.megacom.natvservice.dao.ChannelsRepo;
 import kg.megacom.natvservice.mappers.ChannelMapper;
 import kg.megacom.natvservice.models.Channels;
 import kg.megacom.natvservice.models.dto.ChannelsDto;
+import kg.megacom.natvservice.models.json.ChannelDto;
 import kg.megacom.natvservice.service.ChannelService;
+import kg.megacom.natvservice.service.DiscountService;
+import kg.megacom.natvservice.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +19,12 @@ public class ChannelServiceImpl implements ChannelService {
 
     @Autowired
     private ChannelsRepo channelsRepo;
+
+    @Autowired
+    private PriceService priceService;
+
+    @Autowired
+    private DiscountService discountService;
 
     @Override
     public ChannelsDto save(ChannelsDto channelsDto) {
@@ -41,5 +50,15 @@ public class ChannelServiceImpl implements ChannelService {
 
         return ChannelMapper.INSTANCE.toDto(channels);
 
+    }
+
+    @Override
+    public List<ChannelDto> findAllChannels() {
+
+        List<ChannelDto> channelDtos = priceService.findChannelWithPrice();
+
+        channelDtos.forEach(x -> x.setDiscountDtos(discountService.findDiscountsByChannelId(x.getId())));
+
+        return channelDtos;
     }
 }

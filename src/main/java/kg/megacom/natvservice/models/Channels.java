@@ -17,4 +17,6 @@ public class Channels {
     private String photo;
     private boolean active;
     private int orderNum;
+
+
 }

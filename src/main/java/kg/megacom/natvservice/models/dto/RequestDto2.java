@@ -10,5 +10,5 @@ public class RequestDto2 {
 
     private Long channelId;
     private double price;
-    private List<DaysDto> days;
+    private List<String> days;
 }

@@ -4,6 +4,7 @@ import kg.megacom.natvservice.dao.DiscountRepo;
 import kg.megacom.natvservice.mappers.DiscountMapper;
 import kg.megacom.natvservice.models.Discounts;
 import kg.megacom.natvservice.models.dto.DiscountsDto;
+import kg.megacom.natvservice.models.json.DiscountDto;
 import kg.megacom.natvservice.service.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,10 @@ public class DiscountServiceImpl implements DiscountService {
     @Override
     public DiscountsDto findBy(Long id) {
         return null;
+    }
+
+    @Override
+    public List<DiscountDto> findDiscountsByChannelId(Long id) {
+        return discountRepo.findDiscountsByChannelId(id, new Date());
     }
 }

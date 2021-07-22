@@ -4,6 +4,7 @@ import kg.megacom.natvservice.dao.PriceRepo;
 import kg.megacom.natvservice.mappers.PriceMapper;
 import kg.megacom.natvservice.models.Price;
 import kg.megacom.natvservice.models.dto.PriceDto;
+import kg.megacom.natvservice.models.json.ChannelDto;
 import kg.megacom.natvservice.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,10 @@ public class PriceServiceImpl implements PriceService {
     @Override
     public PriceDto findBy(Long id) {
         return null;
+    }
+
+    @Override
+    public List<ChannelDto> findChannelWithPrice() {
+        return priceRepo.findChannelsWithPrice(new Date());
     }
 }

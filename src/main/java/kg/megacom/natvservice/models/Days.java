@@ -17,7 +17,7 @@ public class Days {
     @JoinColumn(name = "id_order_details")
     private OrderDetail idOrderDetail;
 
-    private String day;
+    private int day;
 
 
 }

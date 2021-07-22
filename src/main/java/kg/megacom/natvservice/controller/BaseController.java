@@ -10,12 +10,12 @@ public interface BaseController<S, T> {
     @PostMapping("/save")
     public S save(@RequestBody S s);
 
-    @PutMapping("update")
+    @PutMapping("/update")
     public S update(@RequestBody S s);
 
     @GetMapping("/findAll")
     public List<S> findAll();
 
-    @GetMapping("/finById")
-    public S findById (@RequestBody T id);
+    @GetMapping("/{id}")
+    public S findById (@PathVariable T id);
 }

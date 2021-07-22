@@ -19,7 +19,7 @@ public class Discounts {
     @JoinColumn(name = "id_channels")
     private Channels channels;
 
-    private int percent;
+    private double percent;
     private Date starDate;
     private Date endDate;
     private int midDays;

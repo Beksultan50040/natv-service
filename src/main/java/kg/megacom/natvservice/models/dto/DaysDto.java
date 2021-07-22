@@ -10,7 +10,6 @@ import java.util.List;
 @Data
 public class DaysDto {
 
-
     private String day;
 
 
